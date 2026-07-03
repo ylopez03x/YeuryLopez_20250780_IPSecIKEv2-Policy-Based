@@ -3,6 +3,14 @@
 
 ---
 
+## Video de demostración
+
+[![Ver en YouTube](https://img.shields.io/badge/YouTube-Ver%20Video-red?logo=youtube)](https://youtu.be/si4uS9ZNgV8)
+
+**Enlace directo:** https://youtu.be/si4uS9ZNgV8
+
+---
+
 ## 1. Objetivo
 Configurar una VPN Site-to-Site basada en políticas utilizando IPSec con IKEv2. IKEv2 es más eficiente y seguro que IKEv1, con menos intercambios de mensajes para establecer el túnel. El tráfico interesante se define mediante ACLs.
 
@@ -10,11 +18,7 @@ Configurar una VPN Site-to-Site basada en políticas utilizando IPSec con IKEv2.
 
 ## 2. Topología
 
-```
-[Linux1] --- [SW1] --- [R1] --- [ISP] --- [R2] --- [SW2] --- [Linux2]
-```
-
-> 📸 **SCREENSHOT:** Insertar captura de la topología completa en EVE-NG
+> <img width="940" height="589" alt="image" src="https://github.com/user-attachments/assets/33e4a6d6-8c70-4070-903e-f996efdcc2ee" />
 
 ---
 
@@ -52,7 +56,6 @@ Configurar una VPN Site-to-Site basada en políticas utilizando IPSec con IKEv2.
 
 ### 5.1 Configuración R1
 
-> 📸 **SCREENSHOT:** Insertar captura del `show running-config` de R1 mostrando crypto ikev2 proposal, keyring, profile y crypto map
 
 ```
 crypto ikev2 proposal PROP-IKEv2
@@ -79,8 +82,6 @@ crypto map CMAP 10 ipsec-isakmp
 
 ### 5.2 Configuración R2
 
-> 📸 **SCREENSHOT:** Insertar captura del `show running-config` de R2
-
 ---
 
 ## 6. Verificación y Funcionamiento
@@ -91,7 +92,8 @@ Ejecutar en R1:
 ```
 show crypto ikev2 sa
 ```
-> 📸 **SCREENSHOT:** Insertar captura mostrando estado **READY** — confirma que IKEv2 está establecido
+> <img width="1016" height="218" alt="image" src="https://github.com/user-attachments/assets/f17a1a62-245b-4e80-8800-d579b8a97ac8" />
+
 
 ### 6.2 Estado IPSec SA
 
@@ -99,7 +101,8 @@ Ejecutar en R1:
 ```
 show crypto ipsec sa
 ```
-> 📸 **SCREENSHOT:** Insertar captura mostrando `#pkts encaps` y `#pkts decaps` con valores mayores a 0
+> <img width="814" height="349" alt="image" src="https://github.com/user-attachments/assets/6fcd6153-2c38-4221-9ac0-df6b50ccbffa" />
+
 
 ### 6.3 Demostración de conectividad
 
@@ -107,15 +110,4 @@ Ejecutar en Linux1:
 ```
 ping -c 4 192.168.80.2
 ```
-> 📸 **SCREENSHOT:** Insertar captura del ping exitoso desde Linux1 hacia Linux2
-
----
-
-## 7. Archivos del repositorio
-
-| Archivo | Descripción |
-|---|---|
-| `YeuryLopez_20250780_Script_P4.txt` | Script de configuración |
-| `YeuryLopez_20250780_Informe_P4.pdf` | Documentación técnica en PDF |
-| `YeuryLopez_20250780_Links_P4.txt` | Enlace al video |
-| `README.md` | Este archivo |
+> <img width="776" height="189" alt="image" src="https://github.com/user-attachments/assets/348cfb1d-ad0a-48fd-8a80-387c3fce1f4a" />
